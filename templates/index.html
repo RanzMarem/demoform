@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demographic Form</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .entry {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .add-btn {
+            background: #3498db;
+            color: white;
+        }
+
+        .submit-btn {
+            background: #2ecc71;
+            color: white;
+        }
+
+        .add-btn:hover {
+            background: #2980b9;
+        }
+
+        .submit-btn:hover {
+            background: #27ae60;
+        }
+    </style>
+
+    <script>
+        function addEntry() {
+            const container = document.getElementById('entries');
+            const div = document.createElement('div');
+            div.className = "entry";
+
+            div.innerHTML = `
+                <input type="text" name="name" placeholder="Full Name" required>
+                
+                <select name="age" required>
+                    <option value="">Select Age</option>
+                    <option value="12 and below">12 and below</option>
+                    <option value="13-18">13-18</option>
+                    <option value="19-25">19-25</option>
+                    <option value="26-30">26-30</option>
+                    <option value="31-40">31-40</option>
+                    <option value="41-50">41-50</option>
+                    <option value="51-60">51-60</option>
+                    <option value="61 and above">61 and above</option>
+                </select>
+
+                <select name="sex" required>
+                    <option value="">Select Sex</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+
+                <input type="text" name="address" placeholder="Address" required>
+            `;
+
+            container.appendChild(div);
+        }
+    </script>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Demographic Data Form</h2>
+
+    <!-- Form starts here -->
+    <form action="/submit" method="POST">
+
+        <div id="entries">
+            <div class="entry">
+                <input type="text" name="name" placeholder="Full Name" required>
+                
+                <select name="age" required>
+                    <option value="">Select Age</option>
+                    <option value="12 and below">12 and below</option>
+                    <option value="13-18">13-18</option>
+                    <option value="19-25">19-25</option>
+                    <option value="26-30">26-30</option>
+                    <option value="31-40">31-40</option>
+                    <option value="41-50">41-50</option>
+                    <option value="51-60">51-60</option>
+                    <option value="61 and above">61 and above</option>
+                </select>
+
+                <select name="sex" required>
+                    <option value="">Select Sex</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <input type="text" name="address" placeholder="Address" required>
+            </div>
+        </div>
+
+        <button type="button" class="add-btn" onclick="addEntry()">Add Another Person</button>
+        <button type="submit" class="submit-btn">Submit</button>
+
+    </form>
+    <!-- Form ends here -->
+</div>
+
+</body>
+</html>
