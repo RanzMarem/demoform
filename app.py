@@ -1,7 +1,12 @@
 from flask import Flask, render_template, request
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-import os
+import os, json
+from oauth2client.service_account import ServiceAccountCredentials
+
+scope = ["https://spreadsheets.google.com/feeds","https://www.googleapis.com/auth/drive"]
+creds_dict = json.loads(os.environ.get("GOOGLE_CREDS"))
+creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
 
 app = Flask(__name__)
 
